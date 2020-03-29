@@ -19,4 +19,4 @@ class StringRestriction(BaseRestriction):
         if self.length is None:
             return 'str'
         else:
-            return 'str not longer than {}'.format(self.length)
+            return 'str with length <= {}'.format(self.length)
