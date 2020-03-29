@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <xs:schema targetNamespace="apip"
-	xmlns:xs="https://www.w3.org/2001/"
+	xmlns:xs="https://www.w3.org/2001/XMLSchema"
 	xmlns:apip="apip"
 	elementFormDefault="qualified"
 >
