@@ -7,7 +7,7 @@ from .BaseApipEntity import BaseApipEntity
 
 
 class BaseApipMessage(ABC, BaseDictable):
-    def __init__(self, xs_type: str, entities: List[BaseApipEntity]):
+    def __init__(self, xs_type: str, *entities: BaseApipEntity):
         setattr(self, '@xs:type', xs_type)
         setattr(self, '@numOfEntities', len(entities))
         self.__entities = entities
