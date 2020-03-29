@@ -1,6 +1,7 @@
 from abc import ABC
 
+from .utils import get_dict_for_defined_vars
 
 class BaseApipEntity(ABC):
     def to_dict(self):
-        return {key: value for key, value in vars(self) if not key.startswith('_') and value is not None}
+        return get_dict_for_defined_vars(self)
