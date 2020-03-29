@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema targetNamespace="apip"
+	xmlns:xs="https://www.w3.org/2001/"
+	xmlns:apip="apip"
+	elementFormDefault="qualified"
+>
+
+	<!-- APIP xsd version: 9.9-->
+	<xs:element name="APIP">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="message" type="apip:ApipMessage" minOccurs="1" maxOccurs="1000" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:complexType name="Asp">
+		<xs:complexContent>
+			<xs:sequence>
+				<xs:element name="Entity" type="apip:AspEntity" minOccurs="1" maxOccurs="63" />
+			</xs:sequence>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AspEntity">
+		<xs:sequence>
+			<xs:element name="cId" minOccurs="0" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="timeTag" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="numIf" minOccurs="0" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+						<xs:minInclusive value="0">
+						<xs:maxInclusive value="31">
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
