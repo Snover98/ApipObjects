@@ -4,9 +4,9 @@ from .BaseRestriction import BaseRestriction
 
 
 class StringRestriction(BaseRestriction):
-    def __init__(self, length: Optional[int] = None):
-        super().__init__("string")
+    RESTRICTION_NAME_IN_XML = "string"
 
+    def __init__(self, length: Optional[int] = None):
         self.length = length
 
     def value_matches_restriction(self, value: str) -> bool:
@@ -19,4 +19,4 @@ class StringRestriction(BaseRestriction):
         if self.length is None:
             return 'str'
         else:
-            return 'str with length <= {}'.format(self.length)
+            return 'string with length <= {}'.format(self.length)

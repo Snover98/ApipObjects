@@ -5,9 +5,7 @@ from .BaseRestriction import BaseRestriction
 
 
 class RealNumberRestriction(BaseRestriction, ABC):
-    def __init__(self, restriction_name: str):
-        super().__init__(restriction_name)
-
+    def __init__(self):
         self.pattern = re.compile("[0-9]+[\.]?[0-9]*")
 
     def value_matches_restriction(self, value: str) -> bool:
@@ -17,14 +15,18 @@ class RealNumberRestriction(BaseRestriction, ABC):
         return float(value)
 
     def __str__(self) -> str:
-        return self.restriction_name_in_xml
+        return getattr(self, "RESTRICTION_NAME_IN_XML")
 
 
 class FloatRestriction(RealNumberRestriction):
+    RESTRICTION_NAME_IN_XML = "float"
+
     def __init__(self):
-        super().__init__("float")
+        super().__init__()
 
 
 class DoubleRestriction(RealNumberRestriction):
+    RESTRICTION_NAME_IN_XML = "double"
+
     def __init__(self):
-        super().__init__("double")
+        super().__init__()

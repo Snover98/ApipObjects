@@ -2,8 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class BaseRestriction(ABC):
-    def __init__(self, restriction_name_in_xml: str):
-        self.restriction_name_in_xml = restriction_name_in_xml
+    RESTRICTION_NAME_IN_XML = None
 
     @abstractmethod
     def value_matches_restriction(self, value: str) -> bool:

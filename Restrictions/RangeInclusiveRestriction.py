@@ -4,10 +4,8 @@ from .BaseRestriction import *
 
 
 class RangeInclusiveRestriction(BaseRestriction):
-    def __init__(self, parent_restriction: BaseRestriction, restriction_name_in_xml: str, minimum: Optional = None,
+    def __init__(self, parent_restriction: BaseRestriction, minimum: Optional = None,
                  maximum: Optional = None):
-        super().__init__(restriction_name_in_xml)
-
         self.parent_restriction = parent_restriction
         self.minimum = minimum
         self.maximum = maximum
