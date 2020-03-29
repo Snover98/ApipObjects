@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<APIP xmlns:apip xmlns:xs="https://www.w3.org/2001/">
+<APIP xmlns="apip" xmlns:xs="https://www.w3.org/2001/">
 	<Message xs:type="Blorg" numOfEntities="2">
 		<Entity>
 			<creationType>8</creationType>
@@ -16,4 +16,4 @@
 			<chaffin>False</chaffin>
 		</Entity>
 	</Message>
-</Apip>
+</APIP>
