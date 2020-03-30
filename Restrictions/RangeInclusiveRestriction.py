@@ -25,7 +25,7 @@ class RangeInclusiveRestriction(BaseRestriction):
         if self.minimum is None:
             return value_converted <= self.maximum
         elif self.maximum is None:
-            return self.maximum <= value_converted
+            return self.minimum <= value_converted
         else:
             return self.minimum <= value_converted <= self.maximum
 
