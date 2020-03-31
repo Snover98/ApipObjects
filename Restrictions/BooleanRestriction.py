@@ -8,10 +8,10 @@ class BooleanRestriction(BaseRestriction):
         super().__init__()
 
     def value_matches_restriction(self, value: str) -> bool:
-        return value.lower() == 'true'
+        return value.lower() == 'true' or value.lower() == 'false'
 
     def to_type(self, value: str):
-        return self.value_matches_restriction(value)
+        return value.lower() == 'true'
 
     def __str__(self) -> str:
         return self.RESTRICTION_NAME_IN_XML
