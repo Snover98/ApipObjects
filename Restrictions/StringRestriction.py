@@ -17,6 +17,6 @@ class StringRestriction(BaseRestriction):
 
     def __str__(self) -> str:
         if self.length is None:
-            return 'str'
+            return 'string'
         else:
             return 'string with length <= {}'.format(self.length)

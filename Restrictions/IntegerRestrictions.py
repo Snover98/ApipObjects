@@ -11,7 +11,7 @@ class IntegerRestriction(BaseRestriction):
     RESTRICTION_NAME_IN_XML = 'integer'
 
     def __init__(self):
-        self.pattern = re.compile("[\-+]?[0-9]+")
+        self.pattern = re.compile("[-+]?[0-9]+")
 
     def value_matches_restriction(self, value) -> bool:
         return self.pattern.match(value) is not None
