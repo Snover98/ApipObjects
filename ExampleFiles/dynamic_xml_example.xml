@@ -7,7 +7,7 @@
 		</Entity>
 		<Entity>
 			<creationType>9</creationType>
-			<blahBlorg>True</blahBlorg>
+			<blahBlorg>true</blahBlorg>
 		</Entity>
 	</Message>
 	<Message xs:type="Hoi" numOfEntities="1">

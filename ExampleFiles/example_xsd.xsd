@@ -9,7 +9,7 @@
 	<xs:element name="APIP">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="message" type="apip:ApipMessage" minOccurs="1" maxOccurs="1000" />
+				<xs:element name="Message" type="apip:ApipMessage" minOccurs="1" maxOccurs="1000" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
