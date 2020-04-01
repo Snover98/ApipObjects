@@ -20,6 +20,8 @@ class BaseRestriction(ABC):
         if not self.value_matches_restriction(value):
             raise RestrictionException(value, self)
 
+        return self.to_type(value)
+
 
 class RestrictionException(Exception):
     def __init__(self, value: str, restriction: BaseRestriction):
