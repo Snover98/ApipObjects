@@ -1,7 +1,7 @@
 import re
 from abc import ABC
 
-from typing import Optional
+from typing import Optional, Union
 
 from .BaseRestriction import BaseRestriction
 from .RangeInclusiveRestriction import RangeInclusiveRestriction
@@ -13,8 +13,8 @@ class IntegerRestriction(BaseRestriction):
     def __init__(self):
         self.pattern = re.compile("[-+]?[0-9]+")
 
-    def value_matches_restriction(self, value) -> bool:
-        return self.pattern.match(value) is not None
+    def value_matches_restriction(self, value: Union[str, int]) -> bool:
+        return type(value) is int or self.pattern.match(value) is not None
 
     def to_type(self, value: str) -> int:
         return int(value)

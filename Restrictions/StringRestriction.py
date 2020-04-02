@@ -9,10 +9,13 @@ class StringRestriction(BaseRestriction):
     def __init__(self, length: Optional[int] = None):
         self.length = length
 
-    def value_matches_restriction(self, value: str) -> bool:
+    def __string_matches_length(self, value: str):
         return self.length is None or len(value) <= self.length
 
-    def to_type(self, value: str):
+    def value_matches_restriction(self, value: str) -> bool:
+        return type(value) is str and self.__string_matches_length(value)
+
+    def to_type(self, value: str) -> str:
         return value
 
     def __str__(self) -> str:

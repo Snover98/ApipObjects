@@ -16,7 +16,7 @@ class RangeInclusiveRestriction(BaseRestriction):
         if minimum is not None and maximum is not None and maximum < minimum:
             raise Exception("ERROR: Illegal range, maximum={} is less than minimum={}".format(maximum, minimum))
 
-    def value_matches_restriction(self, value: str) -> bool:
+    def value_matches_restriction(self, value) -> bool:
         try:
             value_converted = self.parent_restriction(value)
         except RestrictionException as e:
@@ -42,7 +42,7 @@ class RangeInclusiveRestriction(BaseRestriction):
 
         return "[{}, {}]".format(min_str, max_str)
 
-    def to_type(self, value: str):
+    def to_type(self, value):
         self.parent_restriction.to_type(value)
 
     def __str__(self) -> str:
