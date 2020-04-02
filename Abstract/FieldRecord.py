@@ -1,6 +1,6 @@
 from typing import Optional, Dict
 
-from Restrictions import *
+from Restrictions import BaseRestriction
 
 
 class FieldRecord:
