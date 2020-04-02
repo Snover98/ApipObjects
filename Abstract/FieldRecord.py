@@ -18,6 +18,3 @@ class FieldRecord:
     def __call__(self, value: Optional[str] = None):
         return self.to_type(value)
 
-
-def field_records_dict(*records: FieldRecord) -> Dict[str, FieldRecord]:
-    return {record.field_name: record for record in records}
