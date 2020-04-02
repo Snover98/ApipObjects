@@ -15,6 +15,3 @@ class FieldRecord:
 
         return self.restriction(value)
 
-    def __call__(self, value: Optional[str] = None):
-        return self.to_type(value)
-
