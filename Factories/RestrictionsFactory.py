@@ -1,9 +1,5 @@
 import Restrictions
 
-from Restrictions.IntegerRestrictions import *
-from Restrictions.RealNumbersRestrictions import FloatRestriction, DoubleRestriction
-from Restrictions.StringRestriction import StringRestriction
-
 
 class RestrictionsFactory:
     @staticmethod
