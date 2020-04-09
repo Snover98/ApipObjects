@@ -1,4 +1,4 @@
-from abc import ABC
+from abc import abstractmethod
 
 from typing import List
 
@@ -6,7 +6,8 @@ from .BaseDictable import BaseDictable
 from .FieldRecord import FieldRecord
 
 
-class BaseApipEntity(ABC, BaseDictable):
+class BaseApipEntity(BaseDictable):
+    @abstractmethod
     def __init__(self, field_records: List[FieldRecord]):
         self._field_records = field_records
 

@@ -1,12 +1,13 @@
 import re
-from abc import ABC
+from abc import abstractmethod
 
 from typing import Union
 
 from .BaseRestriction import BaseRestriction
 
 
-class RealNumberRestriction(BaseRestriction, ABC):
+class RealNumberRestriction(BaseRestriction):
+    @abstractmethod
     def __init__(self):
         self.pattern = re.compile("[-+]?(([0-9]+[.]?[0-9]*)|([0-9]*[.]?[0-9]+))")
 

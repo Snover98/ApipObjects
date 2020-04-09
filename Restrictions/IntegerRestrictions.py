@@ -1,5 +1,5 @@
 import re
-from abc import ABC
+from abc import abstractmethod
 
 from typing import Optional, Union
 
@@ -23,15 +23,17 @@ class IntegerRestriction(BaseRestriction):
         return "INTEGER"
 
 
-class BaseRangeIntegerRestriction(RangeInclusiveRestriction, ABC):
+class BaseRangeIntegerRestriction(RangeInclusiveRestriction):
+    @abstractmethod
     def __init__(self, minimum: Optional[int] = None, maximum: Optional[int] = None):
         super().__init__(IntegerRestriction(), minimum, maximum)
 
 
-class BaseInGivenRangeIntegerRestriction(BaseRangeIntegerRestriction, ABC):
+class BaseInGivenRangeIntegerRestriction(BaseRangeIntegerRestriction):
     MinRangeEdge = None
     MaxRangeEdge = None
 
+    @abstractmethod
     def __init__(self, minimum: Optional[int] = None, maximum: Optional[int] = None):
         min_range_edge = getattr(self, 'MinRangeEdge')
         if minimum is None:
@@ -124,7 +126,7 @@ class UnsignedLongIntegerRestriction(NonNegativeIntegerRestriction):
         super().__init__(maximum)
 
 
-class UnsignedIntIntegerRestriction(BaseInGivenRangeIntegerRestriction):
+class UnsignedIntIntegerRestriction(NonNegativeIntegerRestriction):
     RESTRICTION_NAME_IN_XML = "unsignedInt"
     MaxRangeEdge = 4294967295
 
