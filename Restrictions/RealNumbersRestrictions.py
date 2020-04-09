@@ -8,7 +8,7 @@ from .BaseRestriction import BaseRestriction
 
 class RealNumberRestriction(BaseRestriction, ABC):
     def __init__(self):
-        self.pattern = re.compile("[-+]?[0-9]+[.]?[0-9]*")
+        self.pattern = re.compile("[-+]?(([0-9]+[.]?[0-9]*)|([0-9]*[.]?[0-9]+))")
 
     def value_matches_restriction(self, value: Union[str, float]) -> bool:
         return type(value) is float or self.pattern.match(value) is not None
