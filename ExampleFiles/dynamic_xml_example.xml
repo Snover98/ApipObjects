@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<APIP xmlns="apip" xmlns:xs="https://www.w3.org/2001/XMLSchema">
+	<Message xs:type="Blorg" numOfEntities="2">
+		<Entity>
+			<creationType>8</creationType>
+			<blingBlong>1</blingBlong>
+		</Entity>
+		<Entity>
+			<creationType>9</creationType>
+			<blahBlorg>true</blahBlorg>
+		</Entity>
+	</Message>
+	<Message xs:type="Hoi" numOfEntities="1">
+		<Entity>
+			<hoiNumber>77</hoiNumber>
+			<chaffin>False</chaffin>
+		</Entity>
+	</Message>
+</APIP>
