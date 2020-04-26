@@ -3,6 +3,7 @@ from .IntegerRestrictions import *
 from .RangeInclusiveRestriction import *
 from .RealNumbersRestrictions import *
 from .StringRestriction import *
+from .BooleanRestriction import *
 
 __all__ = [
         'BaseRestriction',
@@ -25,5 +26,6 @@ __all__ = [
         'UnsignedByteIntegerRestriction',
         'UnsignedIntIntegerRestriction',
         'UnsignedLongIntegerRestriction',
-        'UnsignedShortIntegerRestriction'
+        'UnsignedShortIntegerRestriction',
+        'BooleanRestriction'
     ]
