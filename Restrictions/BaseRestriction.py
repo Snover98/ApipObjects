@@ -16,11 +16,14 @@ class BaseRestriction(ABC):
     def __str__(self) -> str:
         pass
 
-    def __call__(self, value: str):
+    def convert(self, value: str):
         if not self.value_matches_restriction(value):
             raise RestrictionException(value, self)
 
         return self.to_type(value)
+
+    def __call__(self, value: str):
+        return self.convert(value)
 
 
 class RestrictionException(Exception):
