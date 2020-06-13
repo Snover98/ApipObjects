@@ -44,7 +44,7 @@ class RangeInclusiveRestriction(BaseRestriction):
         return "[{}, {}]".format(min_str, max_str)
 
     def to_type(self, value):
-        self.parent_restriction.to_type(value)
+        return self.parent_restriction.to_type(value)
 
     def __str__(self) -> str:
         return '{{} in range {}}'.format(self.parent_restriction, self.__bounds_range())

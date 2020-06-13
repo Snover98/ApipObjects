@@ -1,5 +1,5 @@
 import re
-from abc import ABC
+from abc import abstractmethod
 
 from typing import Optional, Union
 
@@ -28,10 +28,11 @@ class BaseRangeIntegerRestriction(RangeInclusiveRestriction, ABC):
         super().__init__(IntegerRestriction(), minInclusive=minInclusive, maxInclusive=maxInclusive)
 
 
-class BaseInGivenRangeIntegerRestriction(BaseRangeIntegerRestriction, ABC):
+class BaseInGivenRangeIntegerRestriction(BaseRangeIntegerRestriction):
     MinRangeEdge = None
     MaxRangeEdge = None
 
+    @abstractmethod
     def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
         minimum, maximum = minInclusive, maxInclusive
         min_range_edge = getattr(self, 'MinRangeEdge')

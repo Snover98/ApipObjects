@@ -1,12 +1,11 @@
-from abc import ABC
-
-from typing import List
+from abc import abstractmethod
 
 from .BaseDictable import BaseDictable
 from .BaseApipEntity import BaseApipEntity
 
 
-class BaseApipMessage(ABC, BaseDictable):
+class BaseApipMessage(BaseDictable):
+    @abstractmethod
     def __init__(self, xs_type: str, *entities: BaseApipEntity):
         setattr(self, '@xs:type', xs_type)
         setattr(self, '@numOfEntities', len(entities))
