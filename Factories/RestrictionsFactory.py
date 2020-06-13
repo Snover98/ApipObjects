@@ -2,6 +2,8 @@ import Restrictions
 
 
 class RestrictionsFactory:
+    restrictions_dict = None
+
     @staticmethod
     def __get_restriction_classes():
         return [obj for name, obj in vars(Restrictions).items() if name.endswith('Restriction')]
@@ -13,13 +15,15 @@ class RestrictionsFactory:
 
     @staticmethod
     def __get_restrictions_dict() -> dict:
-        return RestrictionsFactory.__get_restrictions_dict_from_classes(RestrictionsFactory.__get_restriction_classes())
+        if RestrictionsFactory.restrictions_dict is None:
+            RestrictionsFactory.restrictions_dict = RestrictionsFactory.__get_restrictions_dict_from_classes(
+                RestrictionsFactory.__get_restriction_classes())
 
-    restrictions_dict = __get_restrictions_dict()
+        return RestrictionsFactory.restrictions_dict
 
     @staticmethod
     def get_restriction(restriction_name):
-        restriction_class = RestrictionsFactory.restrictions_dict.get(restriction_name)
+        restriction_class = RestrictionsFactory.__get_restrictions_dict().get(restriction_name)
 
         if restriction_class is None:
             raise Exception("ERROR: no restriction named {}".format(restriction_name))
