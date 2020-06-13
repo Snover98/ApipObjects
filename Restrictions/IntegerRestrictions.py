@@ -23,10 +23,9 @@ class IntegerRestriction(BaseRestriction):
         return "INTEGER"
 
 
-class BaseRangeIntegerRestriction(RangeInclusiveRestriction):
-    @abstractmethod
-    def __init__(self, minimum: Optional[int] = None, maximum: Optional[int] = None):
-        super().__init__(IntegerRestriction(), minimum, maximum)
+class BaseRangeIntegerRestriction(RangeInclusiveRestriction, ABC):
+    def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
+        super().__init__(IntegerRestriction(), minInclusive=minInclusive, maxInclusive=maxInclusive)
 
 
 class BaseInGivenRangeIntegerRestriction(BaseRangeIntegerRestriction):
@@ -34,7 +33,8 @@ class BaseInGivenRangeIntegerRestriction(BaseRangeIntegerRestriction):
     MaxRangeEdge = None
 
     @abstractmethod
-    def __init__(self, minimum: Optional[int] = None, maximum: Optional[int] = None):
+    def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
+        minimum, maximum = minInclusive, maxInclusive
         min_range_edge = getattr(self, 'MinRangeEdge')
         if minimum is None:
             minimum = min_range_edge
@@ -54,32 +54,32 @@ class NonPositiveIntegerRestriction(BaseInGivenRangeIntegerRestriction):
     RESTRICTION_NAME_IN_XML = "nonPositiveInteger"
     MaxRangeEdge = 0
 
-    def __init__(self, minimum: Optional[int] = None):
-        super().__init__(minimum=minimum)
+    def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
+        super().__init__(minInclusive=minInclusive, maxInclusive=maxInclusive)
 
 
 class NegativeIntegerRestriction(BaseInGivenRangeIntegerRestriction):
     RESTRICTION_NAME_IN_XML = "negativeInteger"
     MaxRangeEdge = -1
 
-    def __init__(self, minimum: Optional[int] = None):
-        super().__init__(minimum=minimum)
+    def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
+        super().__init__(minInclusive=minInclusive, maxInclusive=maxInclusive)
 
 
 class NonNegativeIntegerRestriction(BaseInGivenRangeIntegerRestriction):
     RESTRICTION_NAME_IN_XML = "nonNegativeInteger"
     MinRangeEdge = 0
 
-    def __init__(self, maximum: Optional[int] = None):
-        super().__init__(maximum=maximum)
+    def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
+        super().__init__(minInclusive=minInclusive, maxInclusive=maxInclusive)
 
 
 class PositiveIntegerRestriction(BaseInGivenRangeIntegerRestriction):
     RESTRICTION_NAME_IN_XML = "positiveInteger"
     MinRangeEdge = 1
 
-    def __init__(self, maximum: Optional[int] = None):
-        super().__init__(maximum=maximum)
+    def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
+        super().__init__(minInclusive=minInclusive, maxInclusive=maxInclusive)
 
 
 class LongIntegerRestriction(BaseInGivenRangeIntegerRestriction):
@@ -87,8 +87,8 @@ class LongIntegerRestriction(BaseInGivenRangeIntegerRestriction):
     MinRangeEdge = -9223372036854775808
     MaxRangeEdge = 9223372036854775807
 
-    def __init__(self, minimum: int = MinRangeEdge, maximum: int = MaxRangeEdge):
-        super().__init__(minimum, maximum)
+    def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
+        super().__init__(minInclusive=minInclusive, maxInclusive=maxInclusive)
 
 
 class IntIntegerRestriction(BaseInGivenRangeIntegerRestriction):
@@ -96,8 +96,8 @@ class IntIntegerRestriction(BaseInGivenRangeIntegerRestriction):
     MinRangeEdge = -2147483648
     MaxRangeEdge = 2147483647
 
-    def __init__(self, minimum: int = MinRangeEdge, maximum: int = MaxRangeEdge):
-        super().__init__(minimum, maximum)
+    def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
+        super().__init__(minInclusive=minInclusive, maxInclusive=maxInclusive)
 
 
 class ShortIntegerRestriction(BaseInGivenRangeIntegerRestriction):
@@ -105,8 +105,8 @@ class ShortIntegerRestriction(BaseInGivenRangeIntegerRestriction):
     MinRangeEdge = -32768
     MaxRangeEdge = 32767
 
-    def __init__(self, minimum: int = MinRangeEdge, maximum: int = MaxRangeEdge):
-        super().__init__(minimum, maximum)
+    def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
+        super().__init__(minInclusive=minInclusive, maxInclusive=maxInclusive)
 
 
 class ByteIntegerRestriction(BaseInGivenRangeIntegerRestriction):
@@ -114,37 +114,37 @@ class ByteIntegerRestriction(BaseInGivenRangeIntegerRestriction):
     MinRangeEdge = -128
     MaxRangeEdge = 127
 
-    def __init__(self, minimum: int = MinRangeEdge, maximum: int = MaxRangeEdge):
-        super().__init__(minimum, maximum)
+    def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
+        super().__init__(minInclusive=minInclusive, maxInclusive=maxInclusive)
 
 
 class UnsignedLongIntegerRestriction(NonNegativeIntegerRestriction):
     RESTRICTION_NAME_IN_XML = "unsignedLong"
     MaxRangeEdge = 18446744073709551615
 
-    def __init__(self, maximum: int = MaxRangeEdge):
-        super().__init__(maximum)
+    def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
+        super().__init__(minInclusive=minInclusive, maxInclusive=maxInclusive)
 
 
 class UnsignedIntIntegerRestriction(NonNegativeIntegerRestriction):
     RESTRICTION_NAME_IN_XML = "unsignedInt"
     MaxRangeEdge = 4294967295
 
-    def __init__(self, maximum: int = MaxRangeEdge):
-        super().__init__(maximum)
+    def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
+        super().__init__(minInclusive=minInclusive, maxInclusive=maxInclusive)
 
 
 class UnsignedShortIntegerRestriction(NonNegativeIntegerRestriction):
     RESTRICTION_NAME_IN_XML = "unsignedShort"
     MaxRangeEdge = 65535
 
-    def __init__(self, maximum: int = MaxRangeEdge):
-        super().__init__(maximum)
+    def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
+        super().__init__(minInclusive=minInclusive, maxInclusive=maxInclusive)
 
 
 class UnsignedByteIntegerRestriction(NonNegativeIntegerRestriction):
     RESTRICTION_NAME_IN_XML = "unsignedByte"
     MaxRangeEdge = 255
 
-    def __init__(self, maximum: int = MaxRangeEdge):
-        super().__init__(maximum)
+    def __init__(self, minInclusive: Optional[int] = None, maxInclusive: Optional[int] = None):
+        super().__init__(minInclusive=minInclusive, maxInclusive=maxInclusive)

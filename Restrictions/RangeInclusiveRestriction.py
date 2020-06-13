@@ -4,17 +4,18 @@ from .BaseRestriction import *
 
 
 class RangeInclusiveRestriction(BaseRestriction):
-    def __init__(self, parent_restriction: BaseRestriction, minimum: Optional = None,
-                 maximum: Optional = None):
+    def __init__(self, parent_restriction: BaseRestriction, minInclusive: Optional = None,
+                 maxInclusive: Optional = None):
         self.parent_restriction = parent_restriction
-        self.minimum = minimum
-        self.maximum = maximum
+        self.minimum = minInclusive
+        self.maximum = maxInclusive
 
-        if minimum is None and maximum is None:
+        if self.minimum is None and self.maximum is None:
             raise Exception("ERROR: Illegal range, at least one of the minimum and maximum must be defined")
 
-        if minimum is not None and maximum is not None and maximum < minimum:
-            raise Exception("ERROR: Illegal range, maximum={} is less than minimum={}".format(maximum, minimum))
+        if self.minimum is not None and self.maximum is not None and self.maximum < self.minimum:
+            raise Exception(
+                "ERROR: Illegal range, maximum={} is less than minimum={}".format(self.maximum, self.minimum))
 
     def value_matches_restriction(self, value) -> bool:
         try:

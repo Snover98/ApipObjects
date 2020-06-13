@@ -47,5 +47,64 @@
 		</xs:sequence>
 	</xs:complexType>
 
+	<xs:complexType name="Blorg">
+		<xs:complexContent>
+			<xs:sequence>
+				<xs:element name="Entity" type="apip:BlorgEntity" minOccurs="1" maxOccurs="63" />
+			</xs:sequence>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="BlorgEntity">
+		<xs:sequence>
+			<xs:element name="blingBlong" minOccurs="0" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="creationType" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="15"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="blahBlorg" minOccurs="0" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:boolean">
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Hoi">
+		<xs:complexContent>
+			<xs:sequence>
+				<xs:element name="Entity" type="apip:HoiEntity" minOccurs="1" maxOccurs="63" />
+			</xs:sequence>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="HoiEntity">
+		<xs:sequence>
+			<xs:element name="hoiNumber" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedByte">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="128"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="chaffin" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="16"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
 
 </xs:schema>
